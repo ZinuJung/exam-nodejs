@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add new E-book</h1>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container-fluid pl-0 pr-0">
+        <div class="card shadow m-auto mb-4" style="max-width: 500px">
+            <div class="card-body">
+                <form class="user" action="{{#if (eq isEditing true)}}/e-books/add-e-book/{{ebook._id}}{{else}}/e-books/add-e-book{{/if}}" method="post" style="max-width: 500px; margin: auto"
+                    enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name" class="form-label"> E-book name </label>
+                        <input type="text" class="form-control" id="name" placeholder="E-book name" name="name"
+                            value="{{ebook.name}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="authorName" class="form-label">
+                            Author name
+                        </label>
+                        <input type="text" class="form-control" id="authorName" placeholder="Author name"
+                            name="authorName" value="{{ebook.authorName}}" />
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <label for="numberOfPage" class="form-label">
+                                Number of page
+                            </label>
+                            <input type="number" class="form-control" id="numberOfPage" name="numberOfPage"
+                                value="{{ebook.numPages}}" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="price" class="form-label"> Price </label>
+                            <input type="number" class="form-control" id="price" name="price" value="{{ebook.price}}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="releaseDate" class="form-label">
+                            Release date
+                        </label>
+                        <input type="text" class="form-control" id="releaseDate" placeholder="Release date"
+                            name="releaseDate" value="{{ebook.releaseDate}}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc" class="form-label">
+                            E-book description
+                        </label>
+                        <textarea class="form-control" name="desc" id="desc"
+                            placeholder="E-book description">{{ebook.desc}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"> E-book image </label> <br />
+                        <input hidden type="file" id="e-book-img" name="image" />
+                        <button type="button" class="btn btn-sm btn-info"
+                            onclick="document.getElementById('e-book-img').click();">
+                            Choose image
+                        </button>
+                        <img src="{{ebook.imageUrl}}" class="img-fluid" alt="E-book image" style="width: 200px; height: 200px" />
+                    </div>
+
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary btn-lg ml-auto mr-auto mt-5">
+                            {{#if (eq isEditing true)}}
+                            Update E-book
+                            {{else}}
+                            Add new E-book
+                            {{/if}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

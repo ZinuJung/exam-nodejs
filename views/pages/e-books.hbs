@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">E-books</h1>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container-fluid pl-0 pr-0">
+        <!-- Button create new E-book -->
+        <a href="/e-books/add-e-book" class="btn btn-primary btn-md mb-3">
+            Add new E-book
+        </a>
+
+        <!-- List of E-book -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    List of E-books
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Author Name</th>
+                                <th>Description</th>
+                                <th>Number of page</th>
+                                <th>Release Date</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each ebooks as |ebook|}}
+                            <tr>
+                                <td>{{ebook.name}}</td>
+                                <td>
+                                    <img src="{{ebook.imageUrl}}" class="img-thumbnail"
+                                        style="width: 80px; height: 80px" alt="..." />
+                                </td>
+                                <td>{{ebook.authorName}}</td>
+                                <td>{{ebook.desc}}</td>
+                                <td>{{ebook.numPages}}</td>
+                                <td>{{ebook.releaseDate}}</td>
+                                <td>${{ebook.price}}</td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-edit" data-ebook-id="{{ebook._id}}"> Edit </a>
+                                    <a href="#" class="btn btn-danger" data-ebook-id="{{ebook._id}}"> Delete </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
